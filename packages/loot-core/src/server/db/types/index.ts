@@ -41,6 +41,7 @@ export type DbCategory = {
   goal_def?: JsonString | null;
   template_settings?: { source: 'notes' | 'ui' };
   tombstone: 1 | 0;
+  parent_id?: string | null; // Added for hierarchical subcategories, linking to a parent category  
 };
 
 export type DbCategoryGroup = {
@@ -98,8 +99,6 @@ export type DbPayee = {
   favorite: 1 | 0;
   learn_categories: 1 | 0;
   tombstone: 1 | 0;
-  // Unused in the codebase
-  category?: string | null;
 };
 
 export type DbRule = {

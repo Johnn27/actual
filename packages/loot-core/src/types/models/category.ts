@@ -10,4 +10,5 @@ export interface CategoryEntity {
   sort_order?: number;
   tombstone?: boolean;
   hidden?: boolean;
+  parent_id?: string | null; // Added for hierarchical subcategories, allowing a category to have a parent.
 }

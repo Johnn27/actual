@@ -88,6 +88,7 @@ export const schema = {
     template_settings: f('json', { default: { source: 'notes' } }),
     sort_order: f('float'),
     tombstone: f('boolean'),
+    parent_id: f('id', { ref: 'categories' }), // Added for hierarchical subcategories
   },
   category_groups: {
     id: f('id'),
