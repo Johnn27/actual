@@ -51,15 +51,24 @@
 - `yarn start:desktop` - Desktop development
 - `yarn build:browser` - Production browser build
 
-## 📋 Current Work: Sub-Categories Feature
+**Essential CLI Tools for AI-Enhanced Development:**
+- `rg` (ripgrep) - Ultra-fast code search across entire codebase
+- `jq` - JSON processing for API responses and config manipulation
+- `gh` - GitHub CLI for issue analysis and PR management
+- `tree` - Directory structure visualization
+- `bat` - Enhanced file viewer with syntax highlighting
+- `fd` - Modern alternative to find with better performance
+- `find` - Standard file search utility
+- `curl` - HTTP requests for API testing
 
-**Active Branch:** `feat/sub-categories-johnn27`
-**PR:** [#5268](https://github.com/actualbudget/actual/pull/5268) 
+## 📋 Previous Work: Sub-Categories Feature
 
-**Context:**
-- Building on UnderKoen's [original implementation](https://github.com/actualudget/actual/blob/9988c6e805e7b029885d71f0aa1fcd0402d783e2/packages/loot-core/src/server/db/index.ts)
-- Compare with [current master](https://github.com/actualbudget/actual/blob/master/packages/loot-core/src/server/db/index.ts)
-- Focus: hierarchical category management system
+**Completed PR:** [#5268](https://github.com/actualbudget/actual/pull/5268) - Sub-categories implementation (hierarchical category management system)
+
+**Key Architecture Understanding:**
+- **loot-core** - Business logic engine with budget calculations, database operations, and API endpoints
+- **desktop-client** - React frontend with component-based UI and state management
+- **Integration patterns** - Message-based API communication between frontend and backend
 
 ## 📝 Code Standards & Patterns
 
@@ -114,3 +123,91 @@
 - **Learning-focused:** Detailed explanations for React/TS transitions
 - **Incremental:** Small, focused improvements over large changes
 - **Quality:** Strict linting, TypeScript, and testing standards
+
+## 🤖 AI-Enhanced Development Workflow
+
+**Maximize AI Coding Efficiency with Strategic Tool Usage:**
+
+### 📊 Data-Driven Analysis
+- `rg "useEffect.*\[\]" --type tsx` - Find potential infinite render issues
+- `jq '.scripts' package.json` - Extract available npm/yarn commands
+- `gh issue list --label "good first issue" --json title,number` - Analyze GitHub issues systematically
+- `fd -e tsx -x wc -l` - Count lines of code by file type for complexity assessment
+
+### 🔍 Contextual Codebase Understanding
+- `tree -I node_modules -L 3` - Get high-level project structure for AI context
+- `rg "interface.*Props" --type ts -A 5` - Understand component prop patterns
+- `bat src/components/Button.tsx` - View files with syntax highlighting for better AI analysis
+- `fd "test|spec" -t f -x grep -l "describe\|it\|test"` - Find test files and patterns
+
+### 🚀 Rapid Development Commands
+```bash
+# Quick codebase exploration for AI context
+rg "export.*function" --type ts -n | head -20
+
+# Find similar implementations for pattern matching
+rg "useState.*boolean" --type tsx -B 2 -A 2
+
+# Analyze import patterns for consistency
+rg "^import.*from" --type ts | sort | uniq -c | sort -nr | head -10
+
+# Check for common React anti-patterns
+rg "useEffect.*().*=>" --type tsx -n
+
+# Find TODO/FIXME comments for contribution opportunities
+rg "(TODO|FIXME)" --type ts --type tsx -n
+```
+
+### 🎯 AI Prompt Optimization Strategies
+
+**Provide Maximum Context:**
+1. **File Structure**: Use `tree` to show AI the project layout
+2. **Similar Code**: Use `rg` to find existing patterns before asking for new implementations
+3. **Dependencies**: Use `jq '.dependencies' package.json` to show what libraries are available
+4. **Test Patterns**: Use `fd test` to understand testing conventions
+
+**Effective Prompt Templates:**
+```
+Context: [paste tree output and relevant rg search results]
+Goal: Implement [specific feature] following existing patterns
+Constraints: [TypeScript strict mode, existing component patterns, test coverage]
+Reference: [paste similar existing code found via rg]
+```
+
+### 🔧 Tool-Assisted Problem Solving
+
+**Before Asking AI for Help:**
+1. `rg "error_keyword_from_message"` - Search for similar errors in codebase
+2. `gh issue list --search "error_message"` - Check if others encountered this issue
+3. `fd "*.md" -x grep -l "troubleshooting\|known.*issue"` - Check documentation
+
+**When Implementing Features:**
+1. `rg "similar_feature_name" --type tsx` - Find existing implementations
+2. `fd "*test*" -e ts -e tsx | grep component_name` - Locate relevant tests
+3. `tree src/components | grep -i feature_name` - Understand component organization
+
+### 📈 Workflow Memory Integration
+
+**Build Institutional Knowledge:**
+- Use `jq` to maintain JSON-based pattern databases (as per workflow-learning-system.md)
+- Leverage `rg` for semantic code search and pattern recognition
+- Apply `gh` CLI for systematic GitHub issue analysis
+- Employ `tree` and `fd` for rapid codebase navigation and understanding
+
+**Example Workflow Memory Commands:**
+```bash
+# Update pattern memory after successful analysis
+echo '{"pattern": "useEffect missing dependency", "solution": "Add to deps array"}' | jq '.' >> docs/development/memory/patterns.json
+
+# Search historical solutions
+jq '.solution_templates[] | select(.pattern | contains("react"))' docs/development/memory/patterns.json
+
+# Log successful discoveries
+gh issue view 1234 --json title,body | jq '.title' >> docs/development/memory/discoveries.json
+```
+
+**Pro Tips for AI Collaboration:**
+- Always include file paths and line numbers in requests
+- Use `rg -n` to get line numbers for precise references
+- Combine multiple tool outputs for comprehensive context
+- Save successful command patterns for reuse
